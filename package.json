@@ -1,0 +1,43 @@
+{
+  "name": "owwny-template",
+  "version": "1.0.0",
+  "description": "Plantilla base para proyectos web de Owwny",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
+    "format": "prettier --write src/"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.11.0",
+    "@vue/apollo-composable": "^4.2.1",
+    "firebase": "^10.13.0",
+    "gsap": "^3.14.2",
+    "swiper": "^11.2.1",
+    "vue": "^3.5.0",
+    "vue-router": "^4.4.0",
+    "vue-toastification": "^2.0.0-rc.5",
+    "vue3-country-intl": "^1.0.16",
+    "vue3-smooth-scroll": "^0.8.1",
+    "vuex": "^4.1.0"
+  },
+  "devDependencies": {
+    "@headlessui/vue": "^1.7.22",
+    "@heroicons/vue": "^2.1.5",
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/forms": "^0.5.9",
+    "@tailwindcss/typography": "^0.5.15",
+    "@types/tailwindcss": "^3.1.0",
+    "@vitejs/plugin-vue": "^5.1.0",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^8.57.0",
+    "eslint-plugin-vue": "^9.28.0",
+    "postcss": "^8.4.47",
+    "prettier": "^3.3.3",
+    "prettier-plugin-tailwindcss": "^0.6.6",
+    "tailwindcss": "^3.4.11",
+    "vite": "^5.4.0"
+  }
+}

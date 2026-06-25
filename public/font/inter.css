@@ -1,0 +1,32 @@
+@font-face {
+  font-family: 'Alethia next';
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: normal;
+  font-named-instance: 'Regular';
+  src: url('alethianext-light.otf') format('otf');
+}
+@font-face {
+  font-family: 'Alethia next';
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: italic;
+  font-named-instance: 'Italic';
+  src: url('alethianext-lightitalic.otf') format('otf');
+}
+@font-face {
+  font-family: 'Abril Fat';
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: normal;
+  font-named-instance: 'Regular';
+  src: url('AbrilFatface-Regular.woff') format('woff');
+}
+@font-face {
+  font-family: 'Raleway';
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: bold;
+  font-named-instance: 'Regular';
+  src: url('Raleway-Regular.woff') format('woff');
+}
