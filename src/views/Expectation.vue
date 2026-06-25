@@ -21,7 +21,7 @@
     <!-- Hero -->
     <section class="bg-gradient-to-br from-azul via-azul/80 to-celeste">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 grid lg:grid-cols-2 gap-12 items-center">
-        <div class="text-white order-2 lg:order-1">
+        <div class="text-white">
           <p class="font-montserrat uppercase tracking-widest text-celeste text-sm sm:text-base mb-4">
             Próximamente en Mazatenango
           </p>
@@ -35,84 +35,90 @@
           <button
             type="button"
             @click="scrollToForm"
-            class="bg-white text-azul text-base font-semibold px-6 py-3 rounded-full hover:bg-celeste transition-colors"
+            class="lg:hidden bg-white text-azul text-base font-semibold px-6 py-3 rounded-full hover:bg-celeste transition-colors"
           >
             Quiero ser de los primeros
           </button>
         </div>
-        <div class="order-1 lg:order-2">
-          <img
-            src="https://owwny-b2b-base-files.s3.us-east-1.amazonaws.com/websites/DistritoPacifico/Tipo2.jpg"
-            alt="Render Distrito Pacífico"
-            class="w-full h-auto rounded-2xl shadow-2xl"
-          />
+
+        <!-- Formulario -->
+        <div id="formulario">
+          <div class="bg-white rounded-3xl rounded-tl-[4rem] shadow-2xl p-8 sm:p-12">
+            <h2 class="font-sage text-2xl sm:text-3xl text-azul mb-2">Quiero saber más</h2>
+            <p class="text-gray-500 text-sm sm:text-base mb-8">
+              Regístrate y te contactaremos con toda la información de Distrito Pacífico.
+            </p>
+
+            <form v-if="!submitted" @submit.prevent="handleSubmit" class="space-y-5">
+              <div>
+                <label for="nombre" class="block text-sm font-medium text-azul mb-1">Nombre</label>
+                <input
+                  id="nombre"
+                  v-model.trim="form.nombre"
+                  type="text"
+                  placeholder="Tu nombre completo"
+                  class="block w-full rounded-lg border-gris/60 focus:border-azul focus:ring-azul"
+                />
+                <p v-if="errors.nombre" class="mt-1 text-sm text-red-500">{{ errors.nombre }}</p>
+              </div>
+
+              <div>
+                <label for="email" class="block text-sm font-medium text-azul mb-1">Email</label>
+                <input
+                  id="email"
+                  v-model.trim="form.email"
+                  type="email"
+                  placeholder="tucorreo@ejemplo.com"
+                  class="block w-full rounded-lg border-gris/60 focus:border-azul focus:ring-azul"
+                />
+                <p v-if="errors.email" class="mt-1 text-sm text-red-500">{{ errors.email }}</p>
+              </div>
+
+              <div>
+                <label for="telefono" class="block text-sm font-medium text-azul mb-1">Teléfono</label>
+                <input
+                  id="telefono"
+                  v-model.trim="form.telefono"
+                  type="tel"
+                  placeholder="00000000"
+                  class="block w-full rounded-lg border-gris/60 focus:border-azul focus:ring-azul"
+                />
+                <p v-if="errors.telefono" class="mt-1 text-sm text-red-500">{{ errors.telefono }}</p>
+              </div>
+
+              <button
+                type="submit"
+                :disabled="sending"
+                class="w-full bg-azul text-white font-semibold py-3 rounded-full hover:bg-verdeazul transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {{ sending ? 'Enviando...' : 'Enviar' }}
+              </button>
+            </form>
+
+            <!-- TODO: conectar el submit a Firebase/API cuando se defina el endpoint -->
+            <div v-else class="text-center py-6">
+              <h3 class="font-sage text-xl text-azul mb-2">¡Gracias!</h3>
+              <p class="text-gray-500">Te contactaremos pronto con más información.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Formulario -->
-    <section id="formulario" class="bg-four py-16 sm:py-24">
-      <div class="max-w-xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="bg-white rounded-3xl rounded-tl-[4rem] shadow-xl p-8 sm:p-12">
-         
-          <p class="text-gray-500 text-sm sm:text-base mb-8">
-            Regístrate y te contactaremos con toda la información de Distrito Pacífico.
-          </p>
-
-          <form v-if="!submitted" @submit.prevent="handleSubmit" class="space-y-5">
-            <div>
-              <label for="nombre" class="block text-sm font-medium text-azul mb-1">Nombre</label>
-              <input
-                id="nombre"
-                v-model.trim="form.nombre"
-                type="text"
-                placeholder="Tu nombre completo"
-                class="block w-full rounded-lg border-gris/60 focus:border-azul focus:ring-azul"
-              />
-              <p v-if="errors.nombre" class="mt-1 text-sm text-red-500">{{ errors.nombre }}</p>
-            </div>
-
-            <div>
-              <label for="email" class="block text-sm font-medium text-azul mb-1">Email</label>
-              <input
-                id="email"
-                v-model.trim="form.email"
-                type="email"
-                placeholder="tucorreo@ejemplo.com"
-                class="block w-full rounded-lg border-gris/60 focus:border-azul focus:ring-azul"
-              />
-              <p v-if="errors.email" class="mt-1 text-sm text-red-500">{{ errors.email }}</p>
-            </div>
-
-            <div>
-              <label for="telefono" class="block text-sm font-medium text-azul mb-1">Teléfono</label>
-              <input
-                id="telefono"
-                v-model.trim="form.telefono"
-                type="tel"
-                placeholder="00000000"
-                class="block w-full rounded-lg border-gris/60 focus:border-azul focus:ring-azul"
-              />
-              <p v-if="errors.telefono" class="mt-1 text-sm text-red-500">{{ errors.telefono }}</p>
-            </div>
-
-            <button
-              type="submit"
-              :disabled="sending"
-              class="w-full bg-azul text-white font-semibold py-3 rounded-full hover:bg-verdeazul transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {{ sending ? 'Enviando...' : 'Enviar' }}
-            </button>
-          </form>
-
-          <!-- TODO: conectar el submit a Firebase/API cuando se defina el endpoint -->
-          <div v-else class="text-center py-6">
-            <SunIcon class="w-12 h-12 text-verdeazul mx-auto mb-4" />
-            <h3 class="font-sage text-xl text-azul mb-2">¡Gracias!</h3>
-            <p class="text-gray-500">Te contactaremos pronto con más información.</p>
-          </div>
-        </div>
-      </div>
+    <!-- Slider -->
+    <section class="bg-white">
+      <Swiper
+        :modules="[Pagination, Navigation, Autoplay]"
+        :pagination="{ clickable: true }"
+        :navigation="sliderImages.length > 1"
+        :autoplay="{ delay: 4000, disableOnInteraction: false }"
+        :loop="sliderImages.length > 1"
+        class="distrito-slider w-full h-[320px] sm:h-[460px] lg:h-[600px]"
+      >
+        <SwiperSlide v-for="(image, index) in sliderImages" :key="index">
+          <img :src="image.src" :alt="image.alt" class="w-full h-full object-cover" />
+        </SwiperSlide>
+      </Swiper>
     </section>
 
     <!-- Footer -->
@@ -131,9 +137,24 @@
 
 <script setup>
 import { reactive, ref } from 'vue'
-import SunIcon from '@/components/icons/SunIcon.vue'
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import { Pagination, Navigation, Autoplay } from 'swiper/modules'
+import 'swiper/css'
+import 'swiper/css/pagination'
+import 'swiper/css/navigation'
 
 const currentYear = new Date().getFullYear()
+
+const sliderImages = [
+  {
+    src: 'https://owwny-b2b-base-files.s3.us-east-1.amazonaws.com/websites/DistritoPacifico/Tipo2.jpg',
+    alt: 'Render Distrito Pacífico',
+  },
+  {
+    src: 'https://owwny-b2b-base-files.s3.us-east-1.amazonaws.com/websites/DistritoPacifico/Renders/calle.jpg',
+    alt: 'Render Distrito Pacífico',
+  },
+]
 
 const form = reactive({
   nombre: '',
@@ -171,3 +192,18 @@ const handleSubmit = async () => {
   submitted.value = true
 }
 </script>
+
+<style scoped>
+.distrito-slider :deep(.swiper-pagination-bullet) {
+  background: #ffffff;
+  opacity: 0.6;
+}
+.distrito-slider :deep(.swiper-pagination-bullet-active) {
+  background: #59bdb5;
+  opacity: 1;
+}
+.distrito-slider :deep(.swiper-button-next),
+.distrito-slider :deep(.swiper-button-prev) {
+  color: #ffffff;
+}
+</style>
