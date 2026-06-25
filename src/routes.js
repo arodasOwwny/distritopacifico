@@ -6,14 +6,14 @@ const Thanks = () => import("./views/Thanks.vue")
 
 /** @type {import('vue-router').RouterOptions['routes']} */
 export const routes = [
-  { 
-    path: "/", 
-    component: Expectation, 
-    meta: { 
-      title: "Inicio - Proyecto Inmobiliario",
-      description: "Descubre tu próximo hogar",
+  {
+    path: "/",
+    component: Expectation,
+    meta: {
+      title: "Distrito Pacífico - Un oasis en Mazatenango",
+      description: "Distrito Pacífico es el nuevo desarrollo en Mazatenango donde vivir se siente diferente. Regístrate para conocer todos los detalles.",
       requiresAuth: false
-    } 
+    }
   },
   { 
     path: "/home", 
@@ -24,14 +24,14 @@ export const routes = [
       requiresAuth: false
     } 
   },
-  { 
-    path: "/thanks", 
-    component: Thanks, 
-    meta: { 
-      title: "Gracias - Proyecto Inmobiliario",
-      description: "Información enviada exitosamente",
+  {
+    path: "/thanks",
+    component: Thanks,
+    meta: {
+      title: "¡Gracias! - Distrito Pacífico",
+      description: "Tu información fue enviada exitosamente. Pronto te contactaremos.",
       requiresAuth: false
-    } 
+    }
   },
   { 
     path: "/:path(.*)", 

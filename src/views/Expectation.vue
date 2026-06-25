@@ -105,57 +105,48 @@
               Regístrate y te contactaremos con toda la información de Distrito Pacífico.
             </p>
 
-            <form v-if="!submitted" @submit.prevent="handleSubmit" class="space-y-5">
+            <form @submit.prevent="sendLead" class="space-y-5">
               <div>
                 <label for="nombre" class="block text-sm font-medium text-azul mb-1">Nombre</label>
                 <input
                   id="nombre"
-                  v-model.trim="form.nombre"
+                  v-model.trim="name"
                   type="text"
                   placeholder="Tu nombre completo"
                   class="block w-full rounded-lg border-gris/60 focus:border-azul focus:ring-azul"
                 />
-                <p v-if="errors.nombre" class="mt-1 text-sm text-red-500">{{ errors.nombre }}</p>
               </div>
 
               <div>
                 <label for="email" class="block text-sm font-medium text-azul mb-1">Email</label>
                 <input
                   id="email"
-                  v-model.trim="form.email"
+                  v-model.trim="email"
                   type="email"
                   placeholder="tucorreo@ejemplo.com"
                   class="block w-full rounded-lg border-gris/60 focus:border-azul focus:ring-azul"
                 />
-                <p v-if="errors.email" class="mt-1 text-sm text-red-500">{{ errors.email }}</p>
               </div>
 
               <div>
                 <label for="telefono" class="block text-sm font-medium text-azul mb-1">Teléfono</label>
                 <input
                   id="telefono"
-                  v-model.trim="form.telefono"
+                  v-model.trim="phone"
                   type="tel"
                   placeholder="00000000"
                   class="block w-full rounded-lg border-gris/60 focus:border-azul focus:ring-azul"
                 />
-                <p v-if="errors.telefono" class="mt-1 text-sm text-red-500">{{ errors.telefono }}</p>
               </div>
 
               <button
                 type="submit"
-                :disabled="sending"
+                :disabled="!checkData || showLoading"
                 class="w-full bg-azul text-white font-semibold py-3 rounded-full hover:bg-verdeazul transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {{ sending ? 'Enviando...' : 'Enviar' }}
+                {{ showLoading ? 'Enviando...' : 'Enviar' }}
               </button>
             </form>
-
-            <!-- TODO: conectar el submit a Firebase/API cuando se defina el endpoint -->
-            <div v-else class="text-center py-6">
-              <h3 class="font-sage text-xl text-azul mb-2">¡Gracias!</h3>
-              <p class="text-gray-500">Te contactaremos pronto con más información.</p>
-            </div>
           </div>
         </div>
       </div>
@@ -178,13 +169,18 @@
 </template>
 
 <script setup>
-import { reactive, ref } from 'vue'
+import { computed, ref } from 'vue'
+import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Pagination, Navigation, Autoplay, EffectFade } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 import 'swiper/css/effect-fade'
+
+const store = useStore()
+const router = useRouter()
 
 const currentYear = new Date().getFullYear()
 
@@ -203,40 +199,61 @@ const sliderImages = [
   },
 ]
 
-const form = reactive({
-  nombre: '',
-  email: '',
-  telefono: '',
-})
+const countryCode = '502'
+const name = ref('')
+const phone = ref(null)
+const email = ref('')
+const showLoading = ref(false)
 
-const errors = reactive({
-  nombre: '',
-  email: '',
-  telefono: '',
-})
+const utms = computed(() => store.state.ui.utms)
 
-const sending = ref(false)
-const submitted = ref(false)
+const checkData = computed(() => {
+  return (
+    name.value != '' &&
+    name.value != null &&
+    phone.value != null &&
+    String(phone.value).length > 7 &&
+    email.value != ''
+  )
+})
 
 const scrollToForm = () => {
   document.getElementById('formulario')?.scrollIntoView({ behavior: 'smooth' })
 }
 
-const validate = () => {
-  errors.nombre = form.nombre ? '' : 'Ingresa tu nombre.'
-  errors.email = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email) ? '' : 'Ingresa un correo válido.'
-  errors.telefono = /^\d{8}$/.test(form.telefono) ? '' : 'Ingresa un teléfono válido (8 dígitos).'
-  return !errors.nombre && !errors.email && !errors.telefono
-}
+const sendLead = async () => {
+  if (!checkData.value) return
 
-const handleSubmit = async () => {
-  if (!validate()) return
+  showLoading.value = true
 
-  sending.value = true
-  // TODO: reemplazar por la llamada real a Firebase/API cuando se defina el endpoint del lead
-  await new Promise((resolve) => setTimeout(resolve, 600))
-  sending.value = false
-  submitted.value = true
+  const url = 'https://sq1.owwny.com/webhook-test/distritopacifico'
+  const formData = new FormData()
+  formData.append('lead_Name', name.value)
+  formData.append('lead_Phone', `+${countryCode}${phone.value}`)
+  formData.append('lead_Email', email.value)
+  formData.append('recaptcha_token', '')
+  formData.append('utm_source', utms.value.utm_source)
+  formData.append('utm_medium', 'Owwny')
+  formData.append('utm_campaign', utms.value.utm_campaign)
+  formData.append('utm_id', utms.value.utm_id)
+  formData.append('utm_term', utms.value.utm_term)
+  formData.append('utm_content', utms.value.utm_content)
+
+  const request = new Request(url, {
+    method: 'POST',
+    mode: 'no-cors',
+    body: formData,
+    headers: {
+      accept: 'application/json;odata=verbose',
+      contentType: 'text/xml',
+    },
+  })
+
+  fetch(request)
+  setTimeout(() => {
+    showLoading.value = false
+    router.push('/thanks')
+  }, 2000)
 }
 </script>
 
