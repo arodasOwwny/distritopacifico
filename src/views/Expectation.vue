@@ -18,12 +18,68 @@
       </div>
     </header>
 
+    <!-- Slider -->
+    <section class="relative bg-azul">
+      <Swiper
+        :modules="[Pagination, Navigation, Autoplay, EffectFade]"
+        effect="fade"
+        :fade-effect="{ crossFade: true }"
+        :pagination="{ clickable: true, el: '.distrito-slider-pagination' }"
+        :navigation="{ nextEl: '.distrito-slider-next', prevEl: '.distrito-slider-prev' }"
+        :autoplay="{ delay: 5000, disableOnInteraction: false }"
+        :loop="sliderImages.length > 1"
+        class="distrito-slider w-full h-[420px] sm:h-[560px] lg:h-[680px]"
+      >
+        <SwiperSlide v-for="(slide, index) in sliderImages" :key="index">
+          <div class="relative w-full h-full">
+            <img :src="slide.src" :alt="slide.alt" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-t from-azul/90 via-azul/10 to-transparent"></div>
+            <div class="absolute inset-x-0 bottom-0">
+              <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 pb-12 sm:pb-16 lg:pb-20">
+                <p class="font-montserrat uppercase tracking-[0.2em] text-celeste text-xs sm:text-sm mb-3">
+                  {{ slide.eyebrow }}
+                </p>
+                <h2 class="font-sage text-white text-3xl sm:text-4xl lg:text-5xl leading-tight max-w-xl">
+                  {{ slide.title }}
+                </h2>
+              </div>
+            </div>
+          </div>
+        </SwiperSlide>
+      </Swiper>
+
+      <!-- Controles -->
+      <div class="absolute inset-x-0 bottom-6 sm:bottom-8 z-10 flex items-center justify-center sm:justify-end gap-4 max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 pointer-events-none">
+        <div class="distrito-slider-pagination flex items-center gap-2 pointer-events-auto"></div>
+        <div v-if="sliderImages.length > 1" class="hidden sm:flex items-center gap-2 pointer-events-auto">
+          <button
+            type="button"
+            class="distrito-slider-prev w-10 h-10 rounded-full border border-white/40 flex items-center justify-center text-white hover:bg-verdeazul hover:border-verdeazul transition-colors"
+            aria-label="Anterior"
+          >
+            <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none">
+              <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            class="distrito-slider-next w-10 h-10 rounded-full border border-white/40 flex items-center justify-center text-white hover:bg-verdeazul hover:border-verdeazul transition-colors"
+            aria-label="Siguiente"
+          >
+            <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none">
+              <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
     <!-- Hero -->
     <section class="bg-gradient-to-br from-azul via-azul/80 to-celeste">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 grid lg:grid-cols-2 gap-12 items-center">
         <div class="text-white">
           <p class="font-montserrat uppercase tracking-widest text-celeste text-sm sm:text-base mb-4">
-            Próximamente en Mazatenango
+            Próximamente
           </p>
           <h1 class="font-sage text-4xl sm:text-5xl lg:text-6xl leading-tight mb-6">
             Un oasis en Mazatenango
@@ -105,21 +161,7 @@
       </div>
     </section>
 
-    <!-- Slider -->
-    <section class="bg-white">
-      <Swiper
-        :modules="[Pagination, Navigation, Autoplay]"
-        :pagination="{ clickable: true }"
-        :navigation="sliderImages.length > 1"
-        :autoplay="{ delay: 4000, disableOnInteraction: false }"
-        :loop="sliderImages.length > 1"
-        class="distrito-slider w-full h-[320px] sm:h-[460px] lg:h-[600px]"
-      >
-        <SwiperSlide v-for="(image, index) in sliderImages" :key="index">
-          <img :src="image.src" :alt="image.alt" class="w-full h-full object-cover" />
-        </SwiperSlide>
-      </Swiper>
-    </section>
+  
 
     <!-- Footer -->
     <footer class="bg-azul py-4">
@@ -138,10 +180,11 @@
 <script setup>
 import { reactive, ref } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
-import { Pagination, Navigation, Autoplay } from 'swiper/modules'
+import { Pagination, Navigation, Autoplay, EffectFade } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
+import 'swiper/css/effect-fade'
 
 const currentYear = new Date().getFullYear()
 
@@ -149,10 +192,14 @@ const sliderImages = [
   {
     src: 'https://owwny-b2b-base-files.s3.us-east-1.amazonaws.com/websites/DistritoPacifico/Tipo2.jpg',
     alt: 'Render Distrito Pacífico',
+    eyebrow: 'Mazatenango',
+    title: 'Tu propio oasis',
   },
   {
     src: 'https://owwny-b2b-base-files.s3.us-east-1.amazonaws.com/websites/DistritoPacifico/Renders/calle.jpg',
     alt: 'Render Distrito Pacífico',
+    eyebrow: 'Distrito Pacífico',
+    title: 'Donde vivir se siente diferente',
   },
 ]
 
@@ -195,15 +242,14 @@ const handleSubmit = async () => {
 
 <style scoped>
 .distrito-slider :deep(.swiper-pagination-bullet) {
-  background: #ffffff;
-  opacity: 0.6;
+  width: 28px;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.4);
+  opacity: 1;
+  transition: background-color 0.3s ease;
 }
 .distrito-slider :deep(.swiper-pagination-bullet-active) {
   background: #59bdb5;
-  opacity: 1;
-}
-.distrito-slider :deep(.swiper-button-next),
-.distrito-slider :deep(.swiper-button-prev) {
-  color: #ffffff;
 }
 </style>
