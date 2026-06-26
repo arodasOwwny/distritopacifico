@@ -33,7 +33,7 @@
         <SwiperSlide v-for="(slide, index) in sliderImages" :key="index">
           <div class="relative w-full h-full">
             <img :src="slide.src" :alt="slide.alt" class="w-full h-full object-cover" />
-            <div class="absolute inset-0 bg-gradient-to-t from-azul/90 via-azul/10 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-azul via-azul/30 to-transparent"></div>
             <div class="absolute inset-x-0 bottom-0">
               <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 pb-12 sm:pb-16 lg:pb-20">
                 <p class="font-montserrat uppercase tracking-[0.2em] text-celeste text-xs sm:text-sm mb-3">
@@ -75,18 +75,18 @@
     </section>
 
     <!-- Hero -->
-    <section class="bg-gradient-to-br from-azul via-azul/80 to-celeste">
+    <section class="bg-gradient-to-b from-azul via-azul/80 to-celeste">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 grid lg:grid-cols-2 gap-12 items-center">
         <div class="text-white">
           <p class="font-montserrat uppercase tracking-widest text-celeste text-sm sm:text-base mb-4">
             Próximamente
           </p>
           <h1 class="font-sage text-4xl sm:text-5xl lg:text-6xl leading-tight mb-6">
-            Un oasis en Mazatenango
+            Casas de 1 y 2 niveles en Mazatenango
           </h1>
           <p class="font-montserrat text-base sm:text-lg text-white/90 max-w-md mb-8">
-            Distrito Pacífico es el nuevo desarrollo donde vivir se siente diferente.
-            Déjanos tus datos y sé el primero en conocer todos los detalles.
+            Distrito Pacífico es el nuevo desarrollo de vivienda, comercio e industria en Mazatenango. 
+             
           </p>
           <button
             type="button"
@@ -100,9 +100,9 @@
         <!-- Formulario -->
         <div id="formulario">
           <div class="bg-white rounded-3xl rounded-tl-[4rem] shadow-2xl p-8 sm:p-12">
-            <h2 class="font-sage text-2xl sm:text-3xl text-azul mb-2">Quiero saber más</h2>
+            <h2 class="font-sage text-2xl sm:text-3xl text-azul mb-2">Tu nuevo oasis.</h2>
             <p class="text-gray-500 text-sm sm:text-base mb-8">
-              Regístrate y te contactaremos con toda la información de Distrito Pacífico.
+              Déjanos tus datos y sé el primero en conocer todos los detalles.
             </p>
 
             <form @submit.prevent="sendLead" class="space-y-5">
@@ -188,7 +188,7 @@ const sliderImages = [
   {
     src: 'https://owwny-b2b-base-files.s3.us-east-1.amazonaws.com/websites/DistritoPacifico/Tipo2.jpg',
     alt: 'Render Distrito Pacífico',
-    eyebrow: 'Mazatenango',
+    eyebrow: 'Distrito Pacífico',
     title: 'Tu propio oasis',
   },
   {
