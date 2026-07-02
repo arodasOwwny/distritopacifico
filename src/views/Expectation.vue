@@ -226,7 +226,7 @@ const sendLead = async () => {
 
   showLoading.value = true
 
-  const url = 'https://sq1.owwny.com/webhook-test/distritopacifico'
+  const url = 'https://sq1.owwny.com/webhook/distritopacifico'
   const formData = new FormData()
   formData.append('lead_Name', name.value)
   formData.append('lead_Phone', `+${countryCode}${phone.value}`)
