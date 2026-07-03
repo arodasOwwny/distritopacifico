@@ -160,9 +160,9 @@
         <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pb-4 border-b border-gris/30">
           <div class="flex flex-col items-center sm:items-start gap-1">
             <p class="text-gris/80 text-xs">Un proyecto desarrollado por:</p>
-            <div class="bg-white rounded-lg px-3 py-2 shadow-sm">
+            <div class=" shadow-sm">
               <img
-                src="https://owwny-b2b-base-files.s3.amazonaws.com/websites/CDLP/InteproLogoColor.png"
+                src="https://owwny-b2b-base-files.s3.us-east-1.amazonaws.com/websites/DistritoPacifico/InteproLogoBlanco.png"
                 alt="Intepro"
                 class="h-10 w-auto"
               />
