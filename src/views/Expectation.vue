@@ -164,7 +164,7 @@
               <img
                 src="https://owwny-b2b-base-files.s3.us-east-1.amazonaws.com/websites/DistritoPacifico/InteproLogoBlanco.png"
                 alt="Intepro"
-                class="h-10 w-auto"
+                class="h-12 w-auto"
               />
             </div>
           </div>
