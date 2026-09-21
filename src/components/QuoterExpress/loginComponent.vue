@@ -12,7 +12,7 @@
         <div class="sm:mx-auto sm:w-full sm:max-w-md">
           <img
             class="mx-auto h-40 w-auto p-2"
-            src="https://owwny-b2b-base-files.s3.amazonaws.com/websites/owwny-24/owwny_white_360.png"
+            src="https://owwny-b2b-base-files.nyc3.digitaloceanspaces.com/websites/owwny-24/owwny_white_360.png"
             alt=""
           />
         </div> <p class="mt-6 text-center text-5xl font-badScript font-semibold tracking-wider text-primary md:text-center">

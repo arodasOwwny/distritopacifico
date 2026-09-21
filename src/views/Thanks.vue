@@ -2,7 +2,7 @@
   <div class="min-h-screen bg-gradient-to-br from-azul via-azul/80 to-celeste flex flex-col font-montserrat">
     <header class="px-4 sm:px-6 lg:px-8 py-6">
       <img
-        src="https://owwny-b2b-base-files.s3.us-east-1.amazonaws.com/websites/DistritoPacifico/LogoWhiteHorizontal.png"
+        src="https://owwny-b2b-base-files.nyc3.digitaloceanspaces.com/websites/DistritoPacifico/LogoWhiteHorizontal.png"
         alt="Distrito Pacífico"
         class="h-10 sm:h-12 w-auto"
       />

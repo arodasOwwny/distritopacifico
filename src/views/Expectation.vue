@@ -4,7 +4,7 @@
     <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-sm shadow-sm">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         <img
-          src="https://owwny-b2b-base-files.s3.us-east-1.amazonaws.com/websites/DistritoPacifico/LogoColorHorizontal.png"
+          src="https://owwny-b2b-base-files.nyc3.digitaloceanspaces.com/websites/DistritoPacifico/LogoColorHorizontal.png"
           alt="Distrito Pacífico"
           class="h-12 sm:h-12 w-auto"
         />
@@ -162,7 +162,7 @@
             <p class="text-gris/80 text-xs">Un proyecto desarrollado por:</p>
             <div class=" shadow-sm">
               <img
-                src="https://owwny-b2b-base-files.s3.us-east-1.amazonaws.com/websites/DistritoPacifico/InteproLogoBlanco.png"
+                src="https://owwny-b2b-base-files.nyc3.digitaloceanspaces.com/websites/DistritoPacifico/InteproLogoBlanco.png"
                 alt="Intepro"
                 class="h-12 w-auto"
               />
@@ -229,13 +229,13 @@ const socialLinks = {
 
 const sliderImages = [
   {
-    src: 'https://owwny-b2b-base-files.s3.us-east-1.amazonaws.com/websites/DistritoPacifico/Tipo2.jpg',
+    src: 'https://owwny-b2b-base-files.nyc3.digitaloceanspaces.com/websites/DistritoPacifico/Tipo2.jpg',
     alt: 'Render Distrito Pacífico',
     eyebrow: 'Distrito Pacífico',
     title: 'Tu propio oasis',
   },
   {
-    src: 'https://owwny-b2b-base-files.s3.us-east-1.amazonaws.com/websites/DistritoPacifico/Renders/calle.jpg',
+    src: 'https://owwny-b2b-base-files.nyc3.digitaloceanspaces.com/websites/DistritoPacifico/Renders/calle.jpg',
     alt: 'Render Distrito Pacífico',
     eyebrow: 'Distrito Pacífico',
     title: 'Donde vivir se siente diferente',

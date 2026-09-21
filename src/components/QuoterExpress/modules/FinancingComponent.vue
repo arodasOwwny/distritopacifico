@@ -249,7 +249,7 @@ export default {
         this.selected.monthly_interest_fee,
         this.financingMonthAmount,
         this.years,
-        `https://owwny-b2b-base-files.s3.amazonaws.com/${fileUploadName}.pdf`,
+        `https://owwny-b2b-base-files.nyc3.digitaloceanspaces.com/${fileUploadName}.pdf`,
         "quoter-express"
       );
     },
