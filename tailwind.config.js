@@ -20,6 +20,7 @@ module.exports = {
         raleway: ['"Raleway"', ...defaultTheme.fontFamily.sans],
         abrilFat: ['"Abril Fat"', ...defaultTheme.fontFamily.sans],
         sage: ['"Sage"', 'serif'],
+        alethia: ['"Alethia next"', 'serif'],
         montserrat: ['"Montserrat"', ...defaultTheme.fontFamily.sans],
       },
     },

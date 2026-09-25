@@ -4,7 +4,7 @@
   font-display: swap;
   font-style: normal;
   font-named-instance: 'Regular';
-  src: url('alethianext-light.otf') format('otf');
+  src: url('alethianext-light.otf') format('opentype');
 }
 @font-face {
   font-family: 'Alethia next';
@@ -12,7 +12,7 @@
   font-display: swap;
   font-style: italic;
   font-named-instance: 'Italic';
-  src: url('alethianext-lightitalic.otf') format('otf');
+  src: url('alethianext-lightitalic.otf') format('opentype');
 }
 @font-face {
   font-family: 'Abril Fat';
