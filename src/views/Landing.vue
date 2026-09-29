@@ -59,11 +59,11 @@
     <section class="relative min-h-[560px] lg:min-h-[720px] flex items-center overflow-hidden">
       <img :src="img.hero" alt="Casas Distrito Pacífico" class="absolute inset-0 w-full h-full object-cover" />
       <div class="relative boxed py-10 flex lg:justify-end">
-        <div class="w-full lg:w-[44%] bg-white/55 backdrop-blur-[2px] rounded-tl-[3rem] rounded-br-[3rem] p-6 sm:p-8 lg:p-10 text-azul">
+        <div class="w-full lg:w-[44%] bg-white/75 backdrop-blur-[2px] rounded-tl-[3rem] rounded-br-[3rem] p-6 sm:p-8 lg:p-10 text-azul">
           <p class="text-sm sm:text-base">Distrito Pacífico</p>
           <h1 class="font-sage text-3xl sm:text-4xl lg:text-[2.6rem] leading-tight mt-2">Tu oasis en Mazate</h1>
           <div class="h-[3px] w-full bg-gradient-to-r from-verdeazul to-transparent mt-2 mb-5"></div>
-          <p class="font-sage text-lg sm:text-2xl leading-snug">
+          <p class="font-montserrat font-medium text-lg sm:text-2xl leading-snug">
             Casas de 1 y 2 niveles<br />
             Cuotas desde Q 3,400
           </p>
@@ -79,39 +79,45 @@
     </section>
 
     <!-- Ubicación: fondo propio con degradado (azul oscuro → celeste) -->
-    <section id="ubicacion" class="location-gradient pb-14 scroll-mt-16">
-      <div class="boxed py-16">
-        <p class="text-xl sm:text-2xl lg:text-3xl">Ubicación del Proyecto</p>
-        <div class="h-px w-full max-w-md bg-white/70 mt-2"></div>
+    <section id="ubicacion" class="location-gradient scroll-mt-16">
+      <div class="boxed py-32 grid lg:grid-cols-2 gap-10 lg:gap-8 items-center">
+        <div class="text-left">
+          <p class="text-xl sm:text-2xl lg:text-3xl">Ubicación del Proyecto</p>
+          <div class="h-px w-full max-w-md bg-celeste mt-2"></div>
 
-        <!-- Espacio para el mapa (imagen). Solo el título y el botón de Waze son elementos reales -->
-        <div class="mt-8 aspect-[762/430] rounded-2xl overflow-hidden">
-          <img :src="img.map" alt="Mapa de ubicación de Distrito Pacífico" class="w-full h-full object-contain" />
+          <p class="text-base sm:text-lg lg:text-xl mt-8 max-w-sm leading-relaxed">
+            Distrito Pacífico, cerca de todo lo que necesitas. Ubicado en el kilómetro 162.5 sobre la carretera CA-2.
+          </p>
+
+          <div class="mt-10 flex flex-col items-start gap-4">
+            <p class="flex items-center gap-2 text-azul ml-6 text-sm sm:text-base font-medium">
+              <svg viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor">
+                <path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z" />
+              </svg>
+              Distrito Pacífico
+            </p>
+            <a
+              :href="wazeUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 bg-[#1f4577] text-white text-base px-10 py-2.5 rounded-full hover:bg-verdeazul transition-colors"
+            >
+              <svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 3C7.6 3 4.5 6.2 4.5 10c0 1.4.4 2.6 1.1 3.7-.2 1.2-.7 2.3-1.6 3.1 1.6.2 3-.3 4-1.1 1 .5 2.1.8 3.5.8 4.4 0 7.5-3.2 7.5-7.5S16.4 3 12 3Z" />
+                <circle cx="9.5" cy="9.5" r=".9" fill="currentColor" stroke="none" />
+                <circle cx="14.5" cy="9.5" r=".9" fill="currentColor" stroke="none" />
+                <path d="M9.3 12.6c1.5 1.4 3.9 1.4 5.4 0" />
+                <circle cx="8.5" cy="19.2" r="1.5" />
+                <circle cx="15.5" cy="19.2" r="1.5" />
+              </svg>
+              Ir con Waze
+            </a>
+          </div>
         </div>
 
-        <div class="mt-6 flex flex-col items-center gap-4">
-          <p class="flex items-center gap-2 text-azul text-sm sm:text-base font-medium">
-            <svg viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor">
-              <path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z" />
-            </svg>
-            CA2, Mazatenango
-          </p>
-          <a
-            :href="wazeUrl"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 bg-[#1f4577] text-white text-base px-10 py-2.5 rounded-full hover:bg-verdeazul transition-colors"
-          >
-            <svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M12 3C7.6 3 4.5 6.2 4.5 10c0 1.4.4 2.6 1.1 3.7-.2 1.2-.7 2.3-1.6 3.1 1.6.2 3-.3 4-1.1 1 .5 2.1.8 3.5.8 4.4 0 7.5-3.2 7.5-7.5S16.4 3 12 3Z" />
-              <circle cx="9.5" cy="9.5" r=".9" fill="currentColor" stroke="none" />
-              <circle cx="14.5" cy="9.5" r=".9" fill="currentColor" stroke="none" />
-              <path d="M9.3 12.6c1.5 1.4 3.9 1.4 5.4 0" />
-              <circle cx="8.5" cy="19.2" r="1.5" />
-              <circle cx="15.5" cy="19.2" r="1.5" />
-            </svg>
-            Ir con Waze
-          </a>
+        <!-- Mapa (imagen) -->
+        <div class="aspect-video rounded-2xl overflow-hidden">
+          <img :src="img.map" alt="Mapa de ubicación de Distrito Pacífico" class="w-full h-full object-cover" />
         </div>
       </div>
     </section>
@@ -120,7 +126,7 @@
     <section id="entorno" class="bg-[#1f4577] pt-10 lg:pt-14 scroll-mt-16">
       <div class="boxed">
         <p class="text-xl sm:text-2xl lg:text-3xl">Tu nuevo entorno</p>
-        <div class="h-px w-full max-w-md bg-white mt-2"></div>
+        <div class="h-px w-full max-w-md bg-celeste mt-2"></div>
         <h2 class="font-sage text-3xl sm:text-4xl lg:text-5xl leading-tight mt-8 lg:mt-10 max-w-2xl">
           Bienvenido a Distrito Pacífico, tu oasis en Mazatenango.
         </h2>
@@ -169,7 +175,7 @@
       <section id="amenidades" class="pb-10 scroll-mt-16">
         <div class="boxed">
         <p class="text-azul text-xl sm:text-2xl lg:text-3xl">Amenidades</p>
-        <div class="h-px w-full max-w-md bg-azul mt-2"></div>
+        <div class="h-px w-full max-w-md bg-white mt-2"></div>
         <p class="text-base sm:text-lg lg:text-xl tracking-wide mt-8 max-w-4xl leading-relaxed">
           Además, disfrutarás de amenidades como piscina, casa club, cancha polideportiva y churrasqueras, en una
           ubicación estratégica sobre la CA-2.
@@ -201,7 +207,7 @@
       <!-- Video tour -->
       <section id="video" class="boxed pb-16 scroll-mt-16">
         <p class="text-xl sm:text-2xl lg:text-3xl">Video tour</p>
-        <div class="h-px w-full max-w-md bg-white/70 mt-2"></div>
+        <div class="h-px w-full max-w-md bg-celeste mt-2"></div>
         <div class="mt-8 rounded-[2rem] overflow-hidden shadow-xl bg-black">
           <video :src="videoUrl" :poster="img.videoPoster" controls playsinline preload="none" class="w-full aspect-video object-cover"></video>
         </div>
@@ -210,7 +216,7 @@
       <!-- Requisitos -->
       <section id="requisitos" class="boxed pb-16 scroll-mt-16">
         <p class="text-xl sm:text-2xl lg:text-3xl">Requisitos</p>
-        <div class="h-px w-full max-w-md bg-white mt-2"></div>
+        <div class="h-px w-full max-w-md bg-celeste mt-2"></div>
 
         <!-- Filas escalonadas: cada icono en arco sobresale de su píldora y se solapa con la fila anterior -->
         <ul class="mt-10">
@@ -246,7 +252,7 @@
       <!-- Conoce más / Contacto -->
       <section id="formulario" class="boxed pb-16 scroll-mt-16">
         <p class="text-azul text-xl sm:text-2xl lg:text-3xl">Conoce más</p>
-        <div class="h-px w-full max-w-md bg-white mt-2"></div>
+        <div class="h-px w-full max-w-md bg-celeste mt-2"></div>
 
         <div class="mt-10 grid lg:grid-cols-2 gap-10 items-start">
           <div>
@@ -497,7 +503,7 @@ onUnmounted(() => {
 const requirements = [
   { key: 'maletin', text: '1 año de continuidad laboral' },
   { key: 'dinero', text: 'Estados de cuenta de los últimos 3 meses que reflejen los ingresos reportados.' },
-  { key: 'documento', text: 'El banco pide que tengas de ingresos familiares 3 veces la cuota de tu apartamento.' },
+  { key: 'documento', text: 'El banco pide que tengas de ingresos individuales o como núcleo familiar, 3 veces la cuota de tu casa.' },
   { key: 'checklist', text: 'Constancia Laboral y de ingresos' },
 ]
 
