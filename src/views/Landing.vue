@@ -315,21 +315,117 @@
     <section id="desarrolladora" class="bg-white text-center px-6 py-10 scroll-mt-16">
       <p class="text-gray-600 text-base sm:text-lg lg:text-xl">Con el respaldo y desarrollo de</p>
       <img :src="img.intepro" alt="Intepro" class="h-16 sm:h-20 w-auto mx-auto mt-6" />
-      <div class="mt-8 boxed grid sm:grid-cols-3 gap-6 text-base sm:text-lg lg:text-xl">
-        <p v-for="stat in stats" :key="stat.strong" class="text-gray-600">
-          <span class="block text-[#a4212a] font-medium">{{ stat.strong }}</span>
-          {{ stat.text }}
-        </p>
-      </div>
-      <a
-        href="https://intepro.com.gt"
-        target="_blank"
-        rel="noopener noreferrer"
+      <button
+        type="button"
+        @click="nosotrosOpen = true"
         class="inline-block mt-8 bg-[#a4212a] text-white text-lg px-16 py-2 rounded-full hover:opacity-90 transition-opacity"
       >
         Conocer más
-      </a>
+      </button>
     </section>
+
+    <!-- Popup Nosotros (Intepro) -->
+    <Teleport to="body">
+      <Transition name="fade">
+        <div
+          v-if="nosotrosOpen"
+          class="fixed inset-0 z-[100] bg-black/60 flex p-4 overflow-y-auto"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Nosotros"
+          @click.self="nosotrosOpen = false"
+        >
+          <div class="relative m-auto bg-white w-full max-w-4xl rounded-2xl overflow-hidden shadow-2xl font-montserrat text-left">
+            <button
+              type="button"
+              class="absolute top-3 right-3 z-10 w-9 h-9 rounded-full bg-[#1d4373] text-white flex items-center justify-center hover:bg-verdeazul transition-colors"
+              aria-label="Cerrar"
+              @click="nosotrosOpen = false"
+            >
+              <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                <path d="M6 6l12 12M18 6 6 18" />
+              </svg>
+            </button>
+
+            <div class="grid md:grid-cols-2 gap-8 md:gap-10 p-6 sm:p-10 items-center">
+              <div>
+                <h3 class="font-sans font-extrabold text-azul text-3xl sm:text-4xl">Nosotros</h3>
+                <div class="h-[3px] w-28 bg-[#a4212a] rounded-full mt-2 mb-6"></div>
+                <p class="text-gray-600 text-sm sm:text-base leading-relaxed">
+                  INTEPRO nace en el año 2010 después de varias experiencias gerenciales en construcción y otras
+                  industrias, habiendo desarrollado más de 250 viviendas. En ese momento se plantea el primer
+                  desarrollo inmobiliario, Paseo del Obispo. Una venta acelerada, un producto ganador y un resultado
+                  excepcional, nos anima a crecer e innovar el desarrollo.
+                </p>
+              </div>
+              <img
+                :src="img.nosotrosIntepro"
+                alt="Equipo Intepro"
+                class="w-full h-56 sm:h-72 md:h-80 object-cover rounded-xl"
+              />
+            </div>
+
+            <!-- Cifras -->
+            <div class="px-6 sm:px-10 pb-6 sm:pb-10 grid grid-cols-3 gap-4 text-center">
+              <p v-for="stat in stats" :key="stat.strong" class="text-gray-600 text-sm sm:text-base">
+                <span class="block text-[#a4212a] font-semibold">{{ stat.strong }}</span>
+                {{ stat.text }}
+              </p>
+            </div>
+
+            <!-- Barra de contacto Intepro -->
+            <div class="bg-[#eef0f3] px-6 sm:px-10 py-6 grid sm:grid-cols-3 gap-6 items-center text-gray-800">
+              <div>
+                <p class="font-semibold">PBX:</p>
+                <p class="text-xl sm:text-2xl font-bold text-gray-900">2302-3770</p>
+                <p class="text-sm text-gray-600 mt-1">Cayalá Distrito Empresarial,<br />Edificio D, Nivel 3, Oficina 302</p>
+              </div>
+
+              <img :src="img.intepro" alt="Intepro" class="h-10 sm:h-12 w-auto mx-auto" />
+
+              <div class="sm:text-right">
+                <p class="font-semibold mb-2">Síguenos en:</p>
+                <div class="flex sm:justify-end gap-3">
+                  <a
+                    :href="inteproSocialLinks.facebook"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Facebook"
+                    class="w-8 h-8 rounded-full bg-[#1877F2] text-white flex items-center justify-center hover:opacity-90 transition-opacity"
+                  >
+                    <svg viewBox="0 0 512 512" class="w-4 h-4" fill="currentColor">
+                      <path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z" />
+                    </svg>
+                  </a>
+                  <a
+                    :href="inteproSocialLinks.instagram"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram"
+                    class="w-8 h-8 rounded-full bg-gradient-to-tr from-[#feda75] via-[#d62976] to-[#4f5bd5] text-white flex items-center justify-center hover:opacity-90 transition-opacity"
+                  >
+                    <svg viewBox="0 0 448 512" class="w-4 h-4" fill="currentColor">
+                      <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" />
+                    </svg>
+                  </a>
+                  <a
+                    :href="inteproSocialLinks.youtube"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="YouTube"
+                    class="w-8 h-8 rounded-full bg-[#FF0000] text-white flex items-center justify-center hover:opacity-90 transition-opacity"
+                  >
+                    <svg viewBox="0 0 576 512" class="w-4 h-4" fill="currentColor">
+                      <path d="M549.7 124.1c-6.3-23.7-24.8-42.3-48.3-48.6C458.8 64 288 64 288 64S117.2 64 74.6 75.5c-23.5 6.3-42 24.9-48.3 48.6-11.4 42.9-11.4 132.3-11.4 132.3s0 89.4 11.4 132.3c6.3 23.7 24.8 41.5 48.3 47.8C117.2 448 288 448 288 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zm-317.5 213.5V175.2l142.7 81.2-142.7 81.2z" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Transition>
+    </Teleport>
 
     <!-- Footer -->
     <footer class="bg-[#1f4577] px-6 py-8">
@@ -370,7 +466,7 @@
           :aria-label="`Modelo ${selectedModel.name}`"
           @click.self="closeModel"
         >
-          <div class="relative m-auto bg-white w-full max-w-4xl rounded-2xl overflow-hidden shadow-2xl font-montserrat">
+          <div class="relative m-auto bg-white w-full max-w-5xl rounded-2xl overflow-hidden shadow-2xl font-montserrat">
             <button
               type="button"
               class="absolute top-3 left-3 z-10 w-9 h-9 rounded-full bg-[#1d4373] text-white flex items-center justify-center hover:bg-verdeazul transition-colors"
@@ -406,8 +502,8 @@
             </div>
 
             <!-- Características -->
-            <ul class="px-6 sm:px-14 py-6 sm:py-8 grid grid-flow-col grid-rows-4 sm:grid-rows-2 gap-x-6 gap-y-2 sm:gap-y-3">
-              <li v-for="feature in selectedModel.features" :key="feature" class="flex items-center gap-3 font-alethia text-azul text-lg sm:text-2xl">
+            <ul class="px-6 sm:px-14 py-6 sm:py-8 grid grid-cols-2 sm:grid-cols-4 gap-x-8 gap-y-3 sm:gap-y-4">
+              <li v-for="feature in selectedModel.features" :key="feature" class="flex items-center gap-3 font-alethia text-azul text-base sm:text-xl">
                 <span class="w-3 h-3 sm:w-4 sm:h-4 rounded-sm bg-verdeazul shrink-0"></span>
                 {{ feature }}
               </li>
@@ -441,6 +537,7 @@ const img = {
   map: `${BASE}/landing/Mapa.png`,
   videoPoster: `${BASE}/Renders/calle.jpg`,
   intepro: `${BASE}/landing/InteproLogoColor.png`,
+  nosotrosIntepro: `${BASE}/NosotrosIntepro.jpg`,
 }
 const videoUrl = `${BASE}/video-tour.mp4` // pendiente
 const wazeUrl = 'https://waze.com/ul?q=Distrito%20Pac%C3%ADfico%20Mazatenango' // pendiente: coordenadas exactas
@@ -449,6 +546,12 @@ const whatsappUrl = 'https://wa.me/50231327594'
 const socialLinks = {
   instagram: 'https://www.instagram.com/distritopacifico_gt/',
   facebook: 'https://www.facebook.com/people/Distrito-Pac%C3%ADfico/61590998562052/?ref=1',
+}
+
+const inteproSocialLinks = {
+  facebook: 'https://www.facebook.com/inteproinnovando/?locale=es_LA',
+  instagram: 'https://www.instagram.com/_intepro/?hl=es',
+  youtube: 'https://www.youtube.com/channel/UCHm2p4RzuoafmQoi1Mp19bg',
 }
 
 const navLinks = [
@@ -467,14 +570,54 @@ const amenities = [
   { key: 'piscina', label: 'Piscina', bg: 'bg-verdeazul', fg: 'text-white' },
 ]
 
-const auraFeatures = ['Sala', 'Comedor', 'Cocina', '3 Habitaciones', '1 Baño', 'Lavandería', 'Jardín', '2 Parqueos']
-// TODO: render1.png es el de Aura; Terra y Roble usan temporalmente los datos de Aura (render, m² y características); reemplazar por los reales
 const models = [
-  { name: 'Aura', image: `${BASE}/landing/tipoaura.png`, render: `${BASE}/landing/render1.png`, area: 56, features: auraFeatures },
-  { name: 'Terra', image: `${BASE}/landing/tipoterra.png`, render: `${BASE}/landing/render1.png`, area: 56, features: auraFeatures },
-  { name: 'Roble', image: `${BASE}/landing/tiporoble.png`, render: `${BASE}/landing/render1.png`, area: 56, features: auraFeatures },
+  {
+    name: 'Aura',
+    image: `${BASE}/landing/tipoaura.png`,
+    render: `${BASE}/tipologias/aura.png`,
+    area: 56,
+    features: ['Sala', 'Comedor', 'Cocina', '3 Habitaciones', '1 Baño', 'Lavandería', 'Jardín', '2 Parqueos'],
+  },
+  {
+    name: 'Terra',
+    image: `${BASE}/landing/tipoterra.png`,
+    render: `${BASE}/tipologias/terra.png`,
+    area: 88,
+    features: [
+      'Sala',
+      'Comedor',
+      'Cocina',
+      '1 Habitación',
+      '1 Baño',
+      'Lavandería',
+      'Jardín',
+      '2 Parqueos',
+      '3 Habitaciones',
+      '2 Baños',
+    ],
+  },
+  {
+    name: 'Roble',
+    image: `${BASE}/landing/tiporoble.png`,
+    render: `${BASE}/tipologias/roble.png`,
+    area: 111,
+    features: [
+      'Sala',
+      'Comedor',
+      'Cocina',
+      '1 Habitación',
+      '1 Baño',
+      'Lavandería',
+      'Jardín',
+      '2 Parqueos',
+      '3 Habitaciones',
+      '2 Baños',
+      'Sala Familiar',
+    ],
+  },
 ]
 
+const nosotrosOpen = ref(false)
 const menuOpen = ref(false)
 const goTo = (selector) => {
   menuOpen.value = false
