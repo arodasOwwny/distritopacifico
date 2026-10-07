@@ -208,8 +208,34 @@
       <section id="video" class="boxed pb-16 scroll-mt-16">
         <p class="text-xl sm:text-2xl lg:text-3xl">Video tour</p>
         <div class="h-px w-full max-w-md bg-celeste mt-2"></div>
-        <div class="mt-8 rounded-[2rem] overflow-hidden shadow-xl bg-black">
-          <video :src="videoUrl" :poster="img.videoPoster" controls playsinline preload="none" class="w-full aspect-video object-cover"></video>
+        <div class="relative mt-8 rounded-[2rem] overflow-hidden shadow-xl bg-black">
+          <video
+            ref="videoRef"
+            :src="videoUrl"
+            :poster="img.videoPoster"
+            controls
+            playsinline
+            preload="none"
+            class="w-full aspect-video object-cover"
+            @play="videoPlaying = true"
+            @pause="videoPlaying = false"
+          ></video>
+          <button
+            v-if="!videoPlaying"
+            type="button"
+            class="absolute inset-0 flex items-center justify-center group"
+            aria-label="Reproducir video"
+            @click="playVideo"
+          >
+            <span class="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors"></span>
+            <span
+              class="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white/90 group-hover:bg-white flex items-center justify-center shadow-lg transition-colors"
+            >
+              <svg viewBox="0 0 24 24" class="w-7 h-7 sm:w-9 sm:h-9 text-azul translate-x-0.5" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </span>
+          </button>
         </div>
       </section>
 
@@ -338,7 +364,7 @@
           <div class="relative m-auto bg-white w-full max-w-4xl rounded-2xl overflow-hidden shadow-2xl font-montserrat text-left">
             <button
               type="button"
-              class="absolute top-3 right-3 z-10 w-9 h-9 rounded-full bg-[#1d4373] text-white flex items-center justify-center hover:bg-verdeazul transition-colors"
+              class="absolute top-3 right-3 z-10 w-9 h-9 rounded-full bg-[] text-white flex items-center justify-center hover:bg-verdeazul transition-colors"
               aria-label="Cerrar"
               @click="nosotrosOpen = false"
             >
@@ -349,7 +375,7 @@
 
             <div class="grid md:grid-cols-2 gap-8 md:gap-10 p-6 sm:p-10 items-center">
               <div>
-                <h3 class="font-sans font-extrabold text-azul text-3xl sm:text-4xl">Nosotros</h3>
+                <h3 class="font-sans font-extrabold text-gray-800 text-3xl sm:text-4xl">Nosotros</h3>
                 <div class="h-[3px] w-28 bg-[#a4212a] rounded-full mt-2 mb-6"></div>
                 <p class="text-gray-600 text-sm sm:text-base leading-relaxed">
                   INTEPRO nace en el año 2010 después de varias experiencias gerenciales en construcción y otras
@@ -539,7 +565,7 @@ const img = {
   intepro: `${BASE}/landing/InteproLogoColor.png`,
   nosotrosIntepro: `${BASE}/NosotrosIntepro.jpg`,
 }
-const videoUrl = `${BASE}/video-tour.mp4` // pendiente
+const videoUrl = `${BASE}/distritoPTour.mp4`
 const wazeUrl = 'https://waze.com/ul?q=Distrito%20Pac%C3%ADfico%20Mazatenango' // pendiente: coordenadas exactas
 const whatsappUrl = 'https://wa.me/50231327594'
 
@@ -583,18 +609,7 @@ const models = [
     image: `${BASE}/landing/tipoterra.png`,
     render: `${BASE}/tipologias/terra.png`,
     area: 88,
-    features: [
-      'Sala',
-      'Comedor',
-      'Cocina',
-      '1 Habitación',
-      '1 Baño',
-      'Lavandería',
-      'Jardín',
-      '2 Parqueos',
-      '3 Habitaciones',
-      '2 Baños',
-    ],
+    features: ['Sala', 'Comedor', 'Cocina', '4 Habitaciones', '3 Baños', 'Lavandería', 'Jardín', '2 Parqueos'],
   },
   {
     name: 'Roble',
@@ -605,19 +620,23 @@ const models = [
       'Sala',
       'Comedor',
       'Cocina',
-      '1 Habitación',
-      '1 Baño',
+      '4 Habitaciones',
+      '3 Baños',
       'Lavandería',
       'Jardín',
       '2 Parqueos',
-      '3 Habitaciones',
-      '2 Baños',
       'Sala Familiar',
     ],
   },
 ]
 
 const nosotrosOpen = ref(false)
+const videoRef = ref(null)
+const videoPlaying = ref(false)
+const playVideo = () => {
+  videoRef.value?.play()
+}
+
 const menuOpen = ref(false)
 const goTo = (selector) => {
   menuOpen.value = false
