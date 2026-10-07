@@ -8,7 +8,7 @@ const Thanks = () => import("./views/Thanks.vue")
 export const routes = [
   {
     path: "/",
-    component: Expectation,
+    component: Landing,
     meta: {
       title: "Distrito Pacífico - Un oasis en Mazatenango",
       description: "Distrito Pacífico es el nuevo desarrollo en Mazatenango donde vivir se siente diferente. Regístrate para conocer todos los detalles.",
@@ -16,8 +16,8 @@ export const routes = [
     }
   },
   { 
-    path: "/home", 
-    component: Landing, 
+    path: "/expectation", 
+    component: Expectation, 
     meta: { 
       title: "Home - Proyecto Inmobiliario",
       description: "Explora nuestros proyectos",
