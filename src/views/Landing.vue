@@ -61,7 +61,7 @@
       <div class="relative boxed py-10 flex lg:justify-end">
         <div class="w-full lg:w-[44%] bg-white/75 backdrop-blur-[2px] rounded-tl-[3rem] rounded-br-[3rem] p-6 sm:p-8 lg:p-10 text-azul">
           <p class="text-sm sm:text-base">Distrito Pacífico</p>
-          <h1 class="font-sage text-3xl sm:text-4xl lg:text-[2.6rem] leading-tight mt-2">Tu oasis en Mazate</h1>
+          <h1 class="font-sage font-bold lg:font-normal text-3xl sm:text-4xl lg:text-[2.6rem] leading-tight mt-2">Tu oasis en Mazate</h1>
           <div class="h-[3px] w-full bg-gradient-to-r from-verdeazul to-transparent mt-2 mb-5"></div>
           <p class="font-montserrat font-medium text-lg sm:text-2xl leading-snug">
             Casas de 1 y 2 niveles<br />
@@ -90,7 +90,7 @@
           </p>
 
           <div class="mt-10 flex flex-col items-start gap-4">
-            <p class="flex items-center gap-2 text-azul ml-6 text-sm sm:text-base font-medium">
+            <p class="flex items-center gap-2 text-white lg:text-azul ml-6 text-sm sm:text-base font-medium">
               <svg viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor">
                 <path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z" />
               </svg>
@@ -183,22 +183,22 @@
         </div>
 
         <!-- Foto a todo el ancho; los mosaicos sobresalen por debajo (medidas tomadas del diseño) -->
-        <div class="relative mt-14 mb-[16vw] sm:mb-[7vw]">
+        <div class="relative mt-14 mb-[88vw] sm:mb-[7vw]">
           <img :src="img.pool" alt="Piscina y casa club" class="block w-full h-auto" />
-          <p class="absolute inset-x-0 text-center text-white text-[clamp(10px,1.25vw,16px)] bottom-[32%] sm:bottom-[10vw]">
+          <p class="absolute inset-x-0 text-center text-white text-[clamp(10px,1.25vw,16px)] bottom-[16%] sm:bottom-[10vw]">
             *Imágenes con fines ilustrativos.
           </p>
           <div
-            class="absolute left-1/2 -translate-x-1/2 bottom-0 translate-y-[44%] w-[94%] sm:w-[76%] grid grid-cols-5 gap-[2%] sm:gap-[7%]"
+            class="absolute left-1/2 -translate-x-1/2 bottom-0 translate-y-[92%] sm:translate-y-[44%] w-[94%] sm:w-[76%] flex flex-wrap justify-center gap-x-[3%] gap-y-3 sm:grid sm:grid-cols-5 sm:gap-[7%]"
           >
             <div
               v-for="item in amenities"
               :key="item.label"
-              class="aspect-[115/135] sm:aspect-[115/130] rounded-t-full shadow-[6px_4px_8px_rgba(0,0,0,0.35)] flex flex-col items-center justify-between pt-[18%] pb-[8%] px-[4%]"
+              class="w-[30%] sm:w-auto aspect-[115/135] sm:aspect-[115/130] rounded-t-full shadow-[6px_4px_8px_rgba(0,0,0,0.35)] flex flex-col items-center justify-between pt-[18%] pb-[8%] px-[2%] sm:pt-[18%] sm:pb-[8%] sm:px-[4%]"
               :class="[item.bg, item.fg]"
             >
               <AmenityIcon :name="item.key" class="w-[52%] h-auto" />
-              <span class="font-alethia text-azul text-center leading-tight text-[clamp(7px,1.3vw,20px)]">{{ item.label }}</span>
+              <span class="font-alethia text-azul text-center leading-tight text-[16px] sm:text-[clamp(7px,1.3vw,20px)]">{{ item.label }}</span>
             </div>
           </div>
         </div>
@@ -277,7 +277,7 @@
 
       <!-- Conoce más / Contacto -->
       <section id="formulario" class="boxed pb-16 scroll-mt-16">
-        <p class="text-azul text-xl sm:text-2xl lg:text-3xl">Conoce más</p>
+        <p class="text-white lg:text-azul text-xl sm:text-2xl lg:text-3xl">Conoce más</p>
         <div class="h-px w-full max-w-md bg-celeste mt-2"></div>
 
         <div class="mt-10 grid lg:grid-cols-2 gap-10 items-start">
@@ -505,18 +505,18 @@
             </button>
 
             <!-- Encabezado: píldora celeste + medalla con los m² -->
-            <div class="flex justify-end pt-5 sm:pt-8 pl-[18%]">
+            <div class="flex justify-end pt-5 sm:pt-8 pl-12 sm:pl-[18%]">
               <div class="flex items-center w-full">
-                <div class="flex-1 bg-celeste rounded-l-full flex items-center pl-6 sm:pl-10 pr-4">
-                  <h3 class="font-alethia text-azul text-3xl sm:text-5xl lg:text-6xl leading-none py-1 sm:py-2">
+                <div class="flex-1 bg-celeste rounded-l-full flex items-center pl-4 sm:pl-10 pr-8 sm:pr-4">
+                  <h3 class="font-alethia text-azul text-2xl sm:text-5xl lg:text-6xl leading-none py-1 sm:py-2">
                     Modelo {{ selectedModel.name }}
                   </h3>
                 </div>
                 <div
                   v-if="selectedModel.area"
-                  class="-ml-8 sm:-ml-14 bg-[#1d4373] text-white rounded-l-full flex items-baseline justify-center px-6 sm:px-12 py-3 sm:py-6"
+                  class="-ml-6 sm:-ml-14 bg-[#1d4373] text-white rounded-l-full flex items-baseline justify-center px-5 sm:px-12 py-3 sm:py-6"
                 >
-                  <span class="font-alethia text-4xl sm:text-6xl lg:text-7xl leading-none">{{ selectedModel.area }}</span>
+                  <span class="font-alethia text-3xl sm:text-6xl lg:text-7xl leading-none">{{ selectedModel.area }}</span>
                   <span class="font-alethia text-lg sm:text-3xl leading-none">m<sup class="text-[0.6em]">2</sup></span>
                 </div>
               </div>
