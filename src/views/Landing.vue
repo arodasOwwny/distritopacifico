@@ -560,7 +560,7 @@ const img = {
   hero: `${BASE}/landing/heroBG.jpg`,
   aerial: `${BASE}/landing/entorno.png`,
   pool: `${BASE}/landing/amenityBG.png`,
-  map: `${BASE}/landing/Mapa.png`,
+  map: `${BASE}/landing/NewMap.png`,
   videoPoster: `${BASE}/Renders/calle.jpg`,
   intepro: `${BASE}/landing/InteproLogoColor.png`,
   nosotrosIntepro: `${BASE}/NosotrosIntepro.jpg`,
