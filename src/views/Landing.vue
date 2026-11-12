@@ -61,7 +61,7 @@
       <div class="relative boxed py-10 flex lg:justify-end">
         <div class="w-full lg:w-[44%] bg-white/75 backdrop-blur-[2px] rounded-tl-[3rem] rounded-br-[3rem] p-6 sm:p-8 lg:p-10 text-azul">
           <p class="text-sm sm:text-base">Distrito Pacífico</p>
-          <h1 class="font-sage font-bold lg:font-normal text-3xl sm:text-4xl lg:text-[2.6rem] leading-tight mt-2">Tu oasis en Mazate</h1>
+          <h1 class="font-montserrat font-bold text-3xl sm:text-4xl lg:text-[2.6rem] leading-tight mt-2">Tu oasis en Mazate</h1>
           <div class="h-[3px] w-full bg-gradient-to-r from-verdeazul to-transparent mt-2 mb-5"></div>
           <p class="font-montserrat font-medium text-lg sm:text-2xl leading-snug">
             Casas de 1 y 2 niveles<br />
